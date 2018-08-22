@@ -24,17 +24,25 @@ open class PurchaseService: NSObject {
 
 extension PurchaseService: SKPaymentTransactionObserver {
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+
+        print("Received updatedTransactions")
+
         for transaction in transactions {
             switch transaction.transactionState {
             case .purchased:
+                complete(transaction: transaction)
                 break
             case .failed:
+                fail(transaction: transaction)
                 break
             case .restored:
+                restore(transaction: transaction)
                 break
-            case .deferred:
+            case .deferred: // when parental controls require parent to approve
+                print("Deferred transaction")
                 break
             case .purchasing:
+                print("Purchasing transaction")
                 break
             }
         }
