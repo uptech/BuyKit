@@ -20,7 +20,7 @@ open class ProductRepository: NSObject {
     /**
      Primary shared singleton interface for the product repository
      */
-    static let shared = ProductRepository()
+    public static let shared = ProductRepository()
 
     private var productsRequest: SKProductsRequest?
     private var products: [SKProduct] = []

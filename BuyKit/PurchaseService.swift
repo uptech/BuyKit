@@ -1,7 +1,7 @@
 import StoreKit
 
 open class PurchaseService: NSObject {
-    static public let shared = PurchaseService()
+    public static let shared = PurchaseService()
     private override init() {
         super.init()
         SKPaymentQueue.default().add(self)

@@ -7,7 +7,7 @@ open class ReceiptRepository {
     /**
      Primary shared singleton interface for the receipt repository
      */
-    static let shared = ReceiptRepository()
+    public static let shared = ReceiptRepository()
 
     private let userDefaultsPurchasedProductIdsKey = "purchasedSkProductIds"
     private var purchasedProductIdentifiers: Set<ProductIdentifier> = []
