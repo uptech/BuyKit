@@ -10,6 +10,10 @@
 		E9553A71212CEE5000581C70 /* BuyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9553A67212CEE5000581C70 /* BuyKit.framework */; };
 		E9553A76212CEE5000581C70 /* BuyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A75212CEE5000581C70 /* BuyKitTests.swift */; };
 		E9553A78212CEE5000581C70 /* BuyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E9553A6A212CEE5000581C70 /* BuyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9553A82212CEEFE00581C70 /* ReceiptRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A81212CEEFE00581C70 /* ReceiptRepository.swift */; };
+		E9553A84212CEF1100581C70 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A83212CEF1100581C70 /* ProductRepository.swift */; };
+		E9553A86212CEF2100581C70 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A85212CEF2100581C70 /* PurchaseService.swift */; };
+		E9553A88212CEF9F00581C70 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A87212CEF9F00581C70 /* WeakWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +33,10 @@
 		E9553A70212CEE5000581C70 /* BuyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9553A75212CEE5000581C70 /* BuyKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyKitTests.swift; sourceTree = "<group>"; };
 		E9553A77212CEE5000581C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9553A81212CEEFE00581C70 /* ReceiptRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiptRepository.swift; sourceTree = "<group>"; };
+		E9553A83212CEF1100581C70 /* ProductRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRepository.swift; sourceTree = "<group>"; };
+		E9553A85212CEF2100581C70 /* PurchaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseService.swift; sourceTree = "<group>"; };
+		E9553A87212CEF9F00581C70 /* WeakWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,10 @@
 			children = (
 				E9553A6A212CEE5000581C70 /* BuyKit.h */,
 				E9553A6B212CEE5000581C70 /* Info.plist */,
+				E9553A81212CEEFE00581C70 /* ReceiptRepository.swift */,
+				E9553A83212CEF1100581C70 /* ProductRepository.swift */,
+				E9553A85212CEF2100581C70 /* PurchaseService.swift */,
+				E9553A87212CEF9F00581C70 /* WeakWrapper.swift */,
 			);
 			path = BuyKit;
 			sourceTree = "<group>";
@@ -148,6 +160,7 @@
 				TargetAttributes = {
 					E9553A66212CEE5000581C70 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					E9553A6F212CEE5000581C70 = {
 						CreatedOnToolsVersion = 10.0;
@@ -194,6 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9553A82212CEEFE00581C70 /* ReceiptRepository.swift in Sources */,
+				E9553A88212CEF9F00581C70 /* WeakWrapper.swift in Sources */,
+				E9553A84212CEF1100581C70 /* ProductRepository.swift in Sources */,
+				E9553A86212CEF2100581C70 /* PurchaseService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +358,7 @@
 		E9553A7C212CEE5000581C70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -358,6 +376,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ch.upte.BuyKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,6 +385,7 @@
 		E9553A7D212CEE5000581C70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -391,6 +411,7 @@
 		E9553A7F212CEE5000581C70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6449Q3J4XH;
 				INFOPLIST_FILE = BuyKitTests/Info.plist;
@@ -409,6 +430,7 @@
 		E9553A80212CEE5000581C70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6449Q3J4XH;
 				INFOPLIST_FILE = BuyKitTests/Info.plist;
