@@ -1,6 +1,14 @@
 import Foundation
 
 /**
+ Protocol describing interface of an observer of the receipt repository
+ */
+public protocol ReceiptRepositoryObserver {
+    func loaded(productIdentefiers: Set<ProductIdentifier>)
+    func purchaseRecorded(productId: ProductIdentifier)
+}
+
+/**
  Manage storage and retreival of purchase records
  */
 open class ReceiptRepository {
@@ -11,6 +19,7 @@ open class ReceiptRepository {
 
     private let userDefaultsPurchasedProductIdsKey = "purchasedSkProductIds"
     private var purchasedProductIdentifiers: Set<ProductIdentifier> = []
+    private var observers: [WeakWrapper<ReceiptRepositoryObserver>] = []
 
     private init() {}
 
@@ -27,6 +36,8 @@ open class ReceiptRepository {
         } else {
             purchasedProductIdentifiers = Set<ProductIdentifier>([])
         }
+
+        observers.forEach({ $0.value?.loaded(productIdentefiers: purchasedProductIdentifiers) })
     }
 
     /**
@@ -48,5 +59,13 @@ open class ReceiptRepository {
     public func recordPurchase(skProductId: ProductIdentifier) {
         purchasedProductIdentifiers.insert(skProductId)
         UserDefaults.standard.set(Array(purchasedProductIdentifiers), forKey: userDefaultsPurchasedProductIdsKey)
+        observers.forEach({ $0.value?.purchaseRecorded(productId: skProductId) })
+    }
+
+    /**
+     Register an object as an observer of the receipt repository
+     */
+    public func addObserver(_ observer: ReceiptRepositoryObserver) {
+        observers.append(WeakWrapper(observer))
     }
 }
