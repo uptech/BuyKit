@@ -28,6 +28,7 @@ extension PurchaseService: SKPaymentTransactionObserver {
         print("Received updatedTransactions")
 
         for transaction in transactions {
+            print(" - transaction.transactionState: \(transaction.transactionState)")
             switch transaction.transactionState {
             case .purchased:
                 complete(transaction: transaction)

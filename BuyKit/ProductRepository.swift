@@ -101,21 +101,13 @@ open class ProductRepository: NSObject {
 
 extension ProductRepository: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("DREW: Loaded list of products...")
         products = response.products
 
         self.observers.forEach({ $0.value?.updated(products: products) })
         clearRequest()
-
-        for p in products {
-            print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.localizedDescription) \(p.price.floatValue)")
-        }
     }
 
     public func request(_ request: SKRequest, didFailWithError error: Error) {
-        print("DREW: Failed to load list of products.")
-        print("Error: \(error.localizedDescription)")
-
         observers.forEach({ $0.value?.loadFailed(error: error) })
         clearRequest()
     }
