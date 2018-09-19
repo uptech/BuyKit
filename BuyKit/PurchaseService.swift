@@ -2,6 +2,8 @@ import StoreKit
 
 open class PurchaseService: NSObject {
     public static let shared = PurchaseService()
+    private var _canMakePayments: Bool?
+
     private override init() {
         super.init()
         SKPaymentQueue.default().add(self)
@@ -14,7 +16,13 @@ open class PurchaseService: NSObject {
     }
 
     public func canMakePayments() -> Bool {
-        return SKPaymentQueue.canMakePayments()
+        if let makePayments = _canMakePayments {
+            return makePayments
+        } else {
+            let makePayments = SKPaymentQueue.canMakePayments()
+            self._canMakePayments = makePayments
+            return makePayments
+        }
     }
 
     public func restorePurchases() {
