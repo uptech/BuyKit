@@ -15,6 +15,7 @@ open class PurchaseService: NSObject {
         SKPaymentQueue.default().add(payment)
     }
 
+    @discardableResult
     public func canMakePayments() -> Bool {
         if let makePayments = _canMakePayments {
             return makePayments
