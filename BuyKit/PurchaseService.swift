@@ -3,6 +3,7 @@ import StoreKit
 open class PurchaseService: NSObject {
     public static let shared = PurchaseService()
     private var _canMakePayments: Bool?
+    private var restoreCompletedHandler: (() -> Void)?
 
     private override init() {
         super.init()
@@ -10,7 +11,6 @@ open class PurchaseService: NSObject {
     }
 
     public func buyProduct(_ product: SKProduct) {
-        print("Buying \(product.productIdentifier)...")
         let payment = SKPayment(product: product)
         SKPaymentQueue.default().add(payment)
     }
@@ -26,15 +26,14 @@ open class PurchaseService: NSObject {
         }
     }
 
-    public func restorePurchases() {
+    public func restorePurchases(completedHandler: (() -> Void)?) {
+        self.restoreCompletedHandler = completedHandler
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 }
 
 extension PurchaseService: SKPaymentTransactionObserver {
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-
-        print("Received updatedTransactions")
 
         for transaction in transactions {
             print(" - transaction.transactionState: \(transaction.transactionState)")
@@ -59,26 +58,20 @@ extension PurchaseService: SKPaymentTransactionObserver {
     }
 
     private func complete(transaction: SKPaymentTransaction) {
-        print("complete...")
         ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
 
-        // TODO: Notify observers
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 
     private func restore(transaction: SKPaymentTransaction) {
         guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
 
-        print("restore... \(productIdentifier)")
         ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
 
-        // TODO: Notify observers
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 
     private func fail(transaction: SKPaymentTransaction) {
-        print("fail...")
-
         if let transactionError = transaction.error as NSError?,
             let localizedDescription = transaction.error?.localizedDescription,
             transactionError.code != SKError.paymentCancelled.rawValue {
@@ -87,6 +80,10 @@ extension PurchaseService: SKPaymentTransactionObserver {
         }
 
         SKPaymentQueue.default().finishTransaction(transaction)
+    }
+
+    private func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        self.restoreCompletedHandler?()
     }
 }
 
