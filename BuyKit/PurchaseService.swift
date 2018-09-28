@@ -3,7 +3,7 @@ import StoreKit
 open class PurchaseService: NSObject {
     public static let shared = PurchaseService()
     private var _canMakePayments: Bool?
-    private var restoreCompletedHandler: (() -> Void)?
+    private var restoreCompletedHandler: ((Error?) -> Void)?
 
     private override init() {
         super.init()
@@ -26,7 +26,7 @@ open class PurchaseService: NSObject {
         }
     }
 
-    public func restorePurchases(completedHandler: (() -> Void)?) {
+    public func restorePurchases(completedHandler: ((Error?) -> Void)?) {
         self.restoreCompletedHandler = completedHandler
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
@@ -57,6 +57,14 @@ extension PurchaseService: SKPaymentTransactionObserver {
         }
     }
 
+    public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        self.restoreCompletedHandler?(nil)
+    }
+
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        self.restoreCompletedHandler?(error)
+    }
+
     private func complete(transaction: SKPaymentTransaction) {
         ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
 
@@ -80,10 +88,6 @@ extension PurchaseService: SKPaymentTransactionObserver {
         }
 
         SKPaymentQueue.default().finishTransaction(transaction)
-    }
-
-    private func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        self.restoreCompletedHandler?()
     }
 }
 
