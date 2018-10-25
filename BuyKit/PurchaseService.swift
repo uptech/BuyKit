@@ -1,7 +1,7 @@
 import StoreKit
 
 public protocol PurchaseServiceObserver {
-    func finishedPurchase(transactionId: String, productId: String)
+    func purchaseComplete(transactionId: String, productId: String)
 }
 
 open class PurchaseService: NSObject {
@@ -77,7 +77,7 @@ extension PurchaseService: SKPaymentTransactionObserver {
     private func complete(transaction: SKPaymentTransaction) {
         ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
         // StoreKit transaction will have transactionIdentifier when it has been purchased
-        observers.forEach({ $0.value?.finishedPurchase(transactionId: transaction.transactionIdentifier!, productId: transaction.payment.productIdentifier) })
+        observers.forEach({ $0.value?.purchaseComplete(transactionId: transaction.transactionIdentifier!, productId: transaction.payment.productIdentifier) })
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 
