@@ -36,7 +36,7 @@ open class PurchaseService: NSObject {
         SKPaymentQueue.default().restoreCompletedTransactions()
     }
 
-    public func assObserver(_ observer: PurchaseServiceObserver) {
+    public func addObserver(_ observer: PurchaseServiceObserver) {
         observers.append(WeakWrapper(observer))
     }
 }
