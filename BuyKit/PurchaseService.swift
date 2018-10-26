@@ -1,9 +1,14 @@
 import StoreKit
 
+public protocol PurchaseServiceObserver {
+    func purchaseComplete(transactionId: String, productId: String)
+}
+
 open class PurchaseService: NSObject {
     public static let shared = PurchaseService()
     private var _canMakePayments: Bool?
     private var restoreCompletedHandler: ((Error?) -> Void)?
+    private var observers: [WeakWrapper<PurchaseServiceObserver>] = []
 
     private override init() {
         super.init()
@@ -29,6 +34,10 @@ open class PurchaseService: NSObject {
     public func restorePurchases(completedHandler: ((Error?) -> Void)?) {
         self.restoreCompletedHandler = completedHandler
         SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+
+    public func addObserver(_ observer: PurchaseServiceObserver) {
+        observers.append(WeakWrapper(observer))
     }
 }
 
@@ -67,7 +76,8 @@ extension PurchaseService: SKPaymentTransactionObserver {
 
     private func complete(transaction: SKPaymentTransaction) {
         ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
-
+        // StoreKit transaction will have transactionIdentifier when it has been purchased
+        observers.forEach({ $0.value?.purchaseComplete(transactionId: transaction.transactionIdentifier!, productId: transaction.payment.productIdentifier) })
         SKPaymentQueue.default().finishTransaction(transaction)
     }
 
