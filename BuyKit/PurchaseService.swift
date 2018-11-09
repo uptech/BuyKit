@@ -82,7 +82,7 @@ extension PurchaseService: SKPaymentTransactionObserver {
     }
 
     private func restore(transaction: SKPaymentTransaction) {
-        guard let productIdentifier = transaction.original?.payment.productIdentifier else { return }
+        guard let _ = transaction.original?.payment.productIdentifier else { return }
 
         ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
 
