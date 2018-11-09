@@ -63,6 +63,15 @@ open class ReceiptRepository {
     }
 
     /**
+     Get set of known purchased products
+
+     - returns: Set of product identifiers for products that have been purchased
+     */
+    public func purchasedProducts() -> Set<ProductIdentifier> {
+        return purchasedProductIdentifiers
+    }
+
+    /**
      Register an object as an observer of the receipt repository
      */
     public func addObserver(_ observer: ReceiptRepositoryObserver) {
