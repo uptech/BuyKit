@@ -26,7 +26,7 @@ open class ProductRepository: NSObject {
     private var products: [SKProduct] = []
     private var observers: [WeakWrapper<ProductRepositoryObserver>] = []
 
-    private override init() {
+    public override init() {
         super.init()
     }
 
