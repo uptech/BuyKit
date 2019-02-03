@@ -6,7 +6,7 @@ public typealias ProductIdentifier = String
  Protocol describing interface of an observer of the product repository
  */
 public protocol ProductRepositoryObserver {
-    func updated(products: [SKProduct])
+    func updated(products: [SKProduct], invalidProductIdentifers: [String])
     func loadFailed(error: Error)
 }
 
@@ -103,7 +103,7 @@ extension ProductRepository: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         products = response.products
 
-        self.observers.forEach({ $0.value?.updated(products: products) })
+        self.observers.forEach({ $0.value?.updated(products: products, invalidProductIdentifers: response.invalidProductIdentifiers) })
         clearRequest()
     }
 
