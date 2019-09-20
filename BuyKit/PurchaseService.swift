@@ -62,6 +62,8 @@ extension PurchaseService: SKPaymentTransactionObserver {
             case .purchasing:
                 print("Purchasing transaction")
                 break
+            default:
+                fatalError("Unhandled transaction state")
             }
         }
     }

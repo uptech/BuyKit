@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E9553A71212CEE5000581C70 /* BuyKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9553A67212CEE5000581C70 /* BuyKit.framework */; };
+		E953A5A22335582B00A162F9 /* BuyKit_MacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E953A5A02335582B00A162F9 /* BuyKit_MacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E953A5A6233558BA00A162F9 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A87212CEF9F00581C70 /* WeakWrapper.swift */; };
+		E953A5A7233558BE00A162F9 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A85212CEF2100581C70 /* PurchaseService.swift */; };
+		E953A5A8233558C100A162F9 /* ReceiptRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A81212CEEFE00581C70 /* ReceiptRepository.swift */; };
+		E953A5A9233558C500A162F9 /* ProductRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A83212CEF1100581C70 /* ProductRepository.swift */; };
+		E9553A71212CEE5000581C70 /* BuyKit_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9553A67212CEE5000581C70 /* BuyKit_iOS.framework */; };
 		E9553A76212CEE5000581C70 /* BuyKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A75212CEE5000581C70 /* BuyKitTests.swift */; };
 		E9553A78212CEE5000581C70 /* BuyKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E9553A6A212CEE5000581C70 /* BuyKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9553A82212CEEFE00581C70 /* ReceiptRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A81212CEEFE00581C70 /* ReceiptRepository.swift */; };
@@ -27,7 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E9553A67212CEE5000581C70 /* BuyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E953A59E2335582A00A162F9 /* BuyKit_MacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyKit_MacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E953A5A02335582B00A162F9 /* BuyKit_MacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyKit_MacOS.h; sourceTree = "<group>"; };
+		E953A5A12335582B00A162F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9553A67212CEE5000581C70 /* BuyKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9553A6A212CEE5000581C70 /* BuyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyKit.h; sourceTree = "<group>"; };
 		E9553A6B212CEE5000581C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E9553A70212CEE5000581C70 /* BuyKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BuyKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +48,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E953A59B2335582A00A162F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9553A64212CEE5000581C70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -51,18 +66,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9553A71212CEE5000581C70 /* BuyKit.framework in Frameworks */,
+				E9553A71212CEE5000581C70 /* BuyKit_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E953A59F2335582B00A162F9 /* BuyKit-MacOS */ = {
+			isa = PBXGroup;
+			children = (
+				E953A5A02335582B00A162F9 /* BuyKit_MacOS.h */,
+				E953A5A12335582B00A162F9 /* Info.plist */,
+			);
+			path = "BuyKit-MacOS";
+			sourceTree = "<group>";
+		};
 		E9553A5D212CEE5000581C70 = {
 			isa = PBXGroup;
 			children = (
 				E9553A69212CEE5000581C70 /* BuyKit */,
 				E9553A74212CEE5000581C70 /* BuyKitTests */,
+				E953A59F2335582B00A162F9 /* BuyKit-MacOS */,
 				E9553A68212CEE5000581C70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,8 +95,9 @@
 		E9553A68212CEE5000581C70 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E9553A67212CEE5000581C70 /* BuyKit.framework */,
+				E9553A67212CEE5000581C70 /* BuyKit_iOS.framework */,
 				E9553A70212CEE5000581C70 /* BuyKitTests.xctest */,
+				E953A59E2335582A00A162F9 /* BuyKit_MacOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +127,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		E953A5992335582A00A162F9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E953A5A22335582B00A162F9 /* BuyKit_MacOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9553A62212CEE5000581C70 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,9 +146,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E9553A66212CEE5000581C70 /* BuyKit */ = {
+		E953A59D2335582A00A162F9 /* BuyKit-MacOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E9553A7B212CEE5000581C70 /* Build configuration list for PBXNativeTarget "BuyKit" */;
+			buildConfigurationList = E953A5A52335582B00A162F9 /* Build configuration list for PBXNativeTarget "BuyKit-MacOS" */;
+			buildPhases = (
+				E953A5992335582A00A162F9 /* Headers */,
+				E953A59A2335582A00A162F9 /* Sources */,
+				E953A59B2335582A00A162F9 /* Frameworks */,
+				E953A59C2335582A00A162F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BuyKit-MacOS";
+			productName = "BuyKit-MacOS";
+			productReference = E953A59E2335582A00A162F9 /* BuyKit_MacOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E9553A66212CEE5000581C70 /* BuyKit-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E9553A7B212CEE5000581C70 /* Build configuration list for PBXNativeTarget "BuyKit-iOS" */;
 			buildPhases = (
 				E9553A62212CEE5000581C70 /* Headers */,
 				E9553A63212CEE5000581C70 /* Sources */,
@@ -125,9 +177,9 @@
 			);
 			dependencies = (
 			);
-			name = BuyKit;
+			name = "BuyKit-iOS";
 			productName = BuyKit;
-			productReference = E9553A67212CEE5000581C70 /* BuyKit.framework */;
+			productReference = E9553A67212CEE5000581C70 /* BuyKit_iOS.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E9553A6F212CEE5000581C70 /* BuyKitTests */ = {
@@ -158,6 +210,9 @@
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = "UpTech Works, LLC";
 				TargetAttributes = {
+					E953A59D2335582A00A162F9 = {
+						CreatedOnToolsVersion = 10.3;
+					};
 					E9553A66212CEE5000581C70 = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
@@ -179,13 +234,21 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E9553A66212CEE5000581C70 /* BuyKit */,
+				E9553A66212CEE5000581C70 /* BuyKit-iOS */,
 				E9553A6F212CEE5000581C70 /* BuyKitTests */,
+				E953A59D2335582A00A162F9 /* BuyKit-MacOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E953A59C2335582A00A162F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9553A65212CEE5000581C70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,6 +266,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E953A59A2335582A00A162F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E953A5A8233558C100A162F9 /* ReceiptRepository.swift in Sources */,
+				E953A5A7233558BE00A162F9 /* PurchaseService.swift in Sources */,
+				E953A5A6233558BA00A162F9 /* WeakWrapper.swift in Sources */,
+				E953A5A9233558C500A162F9 /* ProductRepository.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E9553A63212CEE5000581C70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,12 +301,68 @@
 /* Begin PBXTargetDependency section */
 		E9553A73212CEE5000581C70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E9553A66212CEE5000581C70 /* BuyKit */;
+			target = E9553A66212CEE5000581C70 /* BuyKit-iOS */;
 			targetProxy = E9553A72212CEE5000581C70 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		E953A5A32335582B00A162F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6449Q3J4XH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "BuyKit-MacOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.upte.BuyKit-MacOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E953A5A42335582B00A162F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6449Q3J4XH;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "BuyKit-MacOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "ch.upte.BuyKit-MacOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		E9553A79212CEE5000581C70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -451,6 +581,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E953A5A52335582B00A162F9 /* Build configuration list for PBXNativeTarget "BuyKit-MacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E953A5A32335582B00A162F9 /* Debug */,
+				E953A5A42335582B00A162F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E9553A61212CEE5000581C70 /* Build configuration list for PBXProject "BuyKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -460,7 +599,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E9553A7B212CEE5000581C70 /* Build configuration list for PBXNativeTarget "BuyKit" */ = {
+		E9553A7B212CEE5000581C70 /* Build configuration list for PBXNativeTarget "BuyKit-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E9553A7C212CEE5000581C70 /* Debug */,

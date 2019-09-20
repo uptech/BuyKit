@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E9553A66212CEE5000581C70"
-               BuildableName = "BuyKit.framework"
-               BlueprintName = "BuyKit"
+               BuildableName = "BuyKit_iOS.framework"
+               BlueprintName = "BuyKit-iOS"
                ReferencedContainer = "container:BuyKit.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9553A66212CEE5000581C70"
-            BuildableName = "BuyKit.framework"
-            BlueprintName = "BuyKit"
+            BuildableName = "BuyKit_iOS.framework"
+            BlueprintName = "BuyKit-iOS"
             ReferencedContainer = "container:BuyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9553A66212CEE5000581C70"
-            BuildableName = "BuyKit.framework"
-            BlueprintName = "BuyKit"
+            BuildableName = "BuyKit_iOS.framework"
+            BlueprintName = "BuyKit-iOS"
             ReferencedContainer = "container:BuyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E9553A66212CEE5000581C70"
-            BuildableName = "BuyKit.framework"
-            BlueprintName = "BuyKit"
+            BuildableName = "BuyKit_iOS.framework"
+            BlueprintName = "BuyKit-iOS"
             ReferencedContainer = "container:BuyKit.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
