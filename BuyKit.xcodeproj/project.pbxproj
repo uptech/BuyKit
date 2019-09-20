@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E953A5A22335582B00A162F9 /* BuyKit_MacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E953A5A02335582B00A162F9 /* BuyKit_MacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E953A5A6233558BA00A162F9 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A87212CEF9F00581C70 /* WeakWrapper.swift */; };
 		E953A5A7233558BE00A162F9 /* PurchaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A85212CEF2100581C70 /* PurchaseService.swift */; };
 		E953A5A8233558C100A162F9 /* ReceiptRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9553A81212CEEFE00581C70 /* ReceiptRepository.swift */; };
@@ -32,9 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E953A59E2335582A00A162F9 /* BuyKit_MacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyKit_MacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E953A5A02335582B00A162F9 /* BuyKit_MacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyKit_MacOS.h; sourceTree = "<group>"; };
-		E953A5A12335582B00A162F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E953A59E2335582A00A162F9 /* BuyKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9553A67212CEE5000581C70 /* BuyKit_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BuyKit_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9553A6A212CEE5000581C70 /* BuyKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyKit.h; sourceTree = "<group>"; };
 		E9553A6B212CEE5000581C70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -73,21 +70,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E953A59F2335582B00A162F9 /* BuyKit-MacOS */ = {
-			isa = PBXGroup;
-			children = (
-				E953A5A02335582B00A162F9 /* BuyKit_MacOS.h */,
-				E953A5A12335582B00A162F9 /* Info.plist */,
-			);
-			path = "BuyKit-MacOS";
-			sourceTree = "<group>";
-		};
 		E9553A5D212CEE5000581C70 = {
 			isa = PBXGroup;
 			children = (
 				E9553A69212CEE5000581C70 /* BuyKit */,
 				E9553A74212CEE5000581C70 /* BuyKitTests */,
-				E953A59F2335582B00A162F9 /* BuyKit-MacOS */,
 				E9553A68212CEE5000581C70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,7 +84,7 @@
 			children = (
 				E9553A67212CEE5000581C70 /* BuyKit_iOS.framework */,
 				E9553A70212CEE5000581C70 /* BuyKitTests.xctest */,
-				E953A59E2335582A00A162F9 /* BuyKit_MacOS.framework */,
+				E953A59E2335582A00A162F9 /* BuyKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,7 +118,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E953A5A22335582B00A162F9 /* BuyKit_MacOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +147,7 @@
 			);
 			name = "BuyKit-MacOS";
 			productName = "BuyKit-MacOS";
-			productReference = E953A59E2335582A00A162F9 /* BuyKit_MacOS.framework */;
+			productReference = E953A59E2335582A00A162F9 /* BuyKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		E9553A66212CEE5000581C70 /* BuyKit-iOS */ = {
@@ -319,7 +305,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "BuyKit-MacOS/Info.plist";
+				INFOPLIST_FILE = BuyKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -328,7 +314,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.upte.BuyKit-MacOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = BuyKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -347,7 +333,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "BuyKit-MacOS/Info.plist";
+				INFOPLIST_FILE = BuyKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -356,7 +342,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				PRODUCT_BUNDLE_IDENTIFIER = "ch.upte.BuyKit-MacOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = BuyKit;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
