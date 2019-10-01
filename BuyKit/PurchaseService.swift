@@ -6,6 +6,8 @@ public protocol PurchaseServiceObserver {
 
 open class PurchaseService: NSObject {
     public static let shared = PurchaseService()
+    public var validationHandler: ((SKPaymentTransaction) -> Bool) = { _ in return true }
+    public var unlockFeaturesHandler: ((SKPaymentTransaction) -> Bool)?
     private var _canMakePayments: Bool?
     private var restoreCompletedHandler: ((Error?) -> Void)?
     private var observers: [WeakWrapper<PurchaseServiceObserver>] = []
@@ -48,7 +50,7 @@ extension PurchaseService: SKPaymentTransactionObserver {
             print(" - transaction.transactionState: \(transaction.transactionState)")
             switch transaction.transactionState {
             case .purchased:
-                complete(transaction: transaction)
+                handlePurchase(transaction: transaction)
                 break
             case .failed:
                 fail(transaction: transaction)
@@ -74,6 +76,16 @@ extension PurchaseService: SKPaymentTransactionObserver {
 
     public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
         self.restoreCompletedHandler?(error)
+    }
+    
+    private func handlePurchase(transaction: SKPaymentTransaction) {
+        guard let unlockHandler = self.unlockFeaturesHandler else {
+            return
+        }
+        
+        if self.validationHandler(transaction) && unlockHandler(transaction) {
+            complete(transaction: transaction)
+        }
     }
 
     private func complete(transaction: SKPaymentTransaction) {
