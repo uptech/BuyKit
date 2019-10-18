@@ -97,10 +97,14 @@ extension PurchaseService: SKPaymentTransactionObserver {
 
     private func restore(transaction: SKPaymentTransaction) {
         guard let _ = transaction.original?.payment.productIdentifier else { return }
-
-        ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
-
-        SKPaymentQueue.default().finishTransaction(transaction)
+        guard let unlockHandler = self.unlockFeaturesHandler else {
+            return
+        }
+        
+        if self.validationHandler(transaction) && unlockHandler(transaction) {
+            ReceiptRepository.shared.recordPurchase(skProductId: transaction.payment.productIdentifier)
+            SKPaymentQueue.default().finishTransaction(transaction)
+        }
     }
 
     private func fail(transaction: SKPaymentTransaction) {
