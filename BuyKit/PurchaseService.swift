@@ -8,6 +8,8 @@ open class PurchaseService: NSObject {
     public static let shared = PurchaseService()
     public var validationHandler: ((SKPaymentTransaction) -> Bool) = { _ in return true }
     public var unlockFeaturesHandler: ((SKPaymentTransaction) -> Bool)?
+    public var transactionProcessingStartingHandler: (([SKPaymentTransaction]) -> Void)?
+    public var transactionProcessingCompletedHandler: (() -> Void)?
     private var _canMakePayments: Bool?
     private var restoreCompletedHandler: ((Error?) -> Void)?
     private var observers: [WeakWrapper<PurchaseServiceObserver>] = []
@@ -45,7 +47,8 @@ open class PurchaseService: NSObject {
 
 extension PurchaseService: SKPaymentTransactionObserver {
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-
+        self.transactionProcessingStartingHandler?(transactions)
+        
         for transaction in transactions {
             print(" - transaction.transactionState: \(transaction.transactionState)")
             switch transaction.transactionState {
@@ -68,6 +71,8 @@ extension PurchaseService: SKPaymentTransactionObserver {
                 fatalError("Unhandled transaction state")
             }
         }
+        
+        self.transactionProcessingCompletedHandler?()
     }
 
     public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
